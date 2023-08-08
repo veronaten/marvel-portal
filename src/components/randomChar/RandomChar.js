@@ -29,6 +29,7 @@ class RandomChar extends Component {
     const {
       char: { name, description, thumbnail, homepage, wiki },
     } = this.state;
+
     return (
       <div className="randomchar">
         <div className="randomchar__block">
@@ -40,7 +41,9 @@ class RandomChar extends Component {
           <div className="randomchar__info">
             <p className="randomchar__name">{name}</p>
             {description !== "" ? (
-              <p className="randomchar__descr">{description}</p>
+              <p className="randomchar__descr">
+                {description?.slice(0, 100) + "..."}
+              </p>
             ) : (
               <p className="randomchar__descr">Description not found</p>
             )}
