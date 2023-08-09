@@ -35,6 +35,10 @@ class RandomChar extends Component {
       .catch(this.onError);
   };
 
+  handleClick = () => {
+    this.updateChar();
+  };
+
   render() {
     const { char, loading, error } = this.state;
 
@@ -54,7 +58,7 @@ class RandomChar extends Component {
             Do you want to get to know him better?
           </p>
           <p className="randomchar__title">Or choose another one</p>
-          <button className="button button__main">
+          <button className="button button__main" onClick={this.handleClick}>
             <div className="inner">try it</div>
           </button>
           <img src={mjolnir} alt="mjolnir" className="randomchar__decoration" />
@@ -68,9 +72,18 @@ export default RandomChar;
 
 const View = ({ char }) => {
   const { name, description, thumbnail, homepage, wiki } = char;
+
+  const withoutIamge = thumbnail.indexOf("image_not_available");
+
   return (
     <div className="randomchar__block">
-      <img src={thumbnail} alt="Random character" className="randomchar__img" />
+      <img
+        src={thumbnail}
+        alt="Random character"
+        className={
+          withoutIamge ? "randomchar__img_without-img" : "randomchar__img"
+        }
+      />
       <div className="randomchar__info">
         <p className="randomchar__name">{name}</p>
         {description !== "" ? (
