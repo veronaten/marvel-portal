@@ -6,11 +6,6 @@ import Spinner from "../spinner/Spinner";
 import "./randomChar.scss";
 
 class RandomChar extends Component {
-  constructor(props) {
-    super(props);
-    this.updateChar();
-  }
-
   state = {
     char: {},
     loading: true,
@@ -18,6 +13,10 @@ class RandomChar extends Component {
   };
 
   marvelService = new MarvelService();
+
+  componentDidMount = () => {
+    this.updateChar();
+  };
 
   onCharLoaded = (char) => {
     this.setState({ char, loading: false });
