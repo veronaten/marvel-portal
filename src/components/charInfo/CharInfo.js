@@ -1,4 +1,3 @@
-import thor from "../../resources/img/thor.jpeg";
 import { Component } from "react";
 import MarvelService from "../../services/MarvelService";
 import Skeleton from "../skeleton/Skeleton";
