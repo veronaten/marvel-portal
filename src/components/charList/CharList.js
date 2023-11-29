@@ -1,6 +1,6 @@
 import "./charList.scss";
 // import abyss from "../../resources/img/abyss.jpg";
-import { Component } from "react";
+import { Component, createRef } from "react";
 import MarvelService from "../../services/MarvelService";
 import Spinner from "../spinner/Spinner";
 
@@ -54,6 +54,21 @@ class CharList extends Component {
     }));
   };
 
+  setCharRef = (elem) => {
+    this.oneRef = elem;
+    console.log("elem", elem);
+    elem.addEventListener(
+      "click",
+      (item) => item.target.classList.add("char__item_selected")
+      // item.classList.add("char__item_selected")
+    );
+  };
+
+  onCharHandleClick = (id) => {
+    console.log("id", id);
+    this.props.onCharSelected(id);
+  };
+
   render() {
     const { chars, loading, newItemLoading, offset, charEnded } = this.state;
 
@@ -68,7 +83,8 @@ class CharList extends Component {
               <li
                 key={item.id}
                 className="char__item"
-                onClick={() => this.props.onCharSelected(item.id)}
+                ref={this.setCharRef}
+                onClick={() => this.onCharHandleClick(item.id)}
               >
                 <img src={item.thumbnail} alt="abyss" />
                 <div className="char__name">{item.name}</div>
