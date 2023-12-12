@@ -56,12 +56,9 @@ class CharList extends Component {
 
   setCharRef = (elem) => {
     this.oneRef = elem;
+
+    // elem.current.classList.remove("char__item_selected");
     console.log("elem", elem);
-    elem.addEventListener(
-      "click",
-      (item) => item.target.classList.add("char__item_selected")
-      // item.classList.add("char__item_selected")
-    );
   };
 
   onCharHandleClick = (id) => {
