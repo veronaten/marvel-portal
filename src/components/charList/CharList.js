@@ -45,11 +45,6 @@ const CharList = ({ onCharSelected }) => {
     setCharEnded(ended);
   };
 
-  // const setCharRef = (elem) => {
-  //   oneRef = elem;
-  //   console.log("elem", elem);
-  // };
-
   const onCharHandleClick = (id) => {
     console.log("id", id);
     onCharSelected(id);
